@@ -8,5 +8,6 @@
 </head>
 <body>
     <p>Hello World!</p>
+    <p>{{$data}}</p>
 </body>
 </html>
