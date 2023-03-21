@@ -21,3 +21,8 @@ Route::get('/hello', function () {
     $data = "Test Data";
     return view('Hello', compact("data"));
 });
+
+Route::get('/tasks', function () {
+    $tasks = ["todo1","todo2","todo3"];
+    return view('tasks', compact("tasks"));
+});
