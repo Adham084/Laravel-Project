@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\NicoController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,23 +15,15 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/tasklist', function () {
-    $tasks  = DB::table('tasks')->get();
-    return view('TaskList', compact('tasks'));
-});
+// TaskList
+Route::get('/', [TaskController::class, 'list'])->name('tasks');
+Route::post('/insert', [TaskController::class, 'insert'])->name('task.insert');
+Route::delete('/delete/{id}', [TaskController::class, 'delete'])->name('task.delete');
+Route::put('/edit/{id}', [TaskController::class, 'edit'])->name('task.edit');
 
-Route::post('/add', function () {
-    DB::table('tasks')->insert([
-        'id' => 4,
-        'name' => $_POST['name'],
-        'created_at' => now(),
-        'updated_at' => now()
-    ]);
-
-    return redirect()->back();
-});
-
-Route::post('/delete', function () {
-    DB::table('tasks')->where('id', $_POST['id'])->delete();
-    return redirect()->back();
-});
+// Nico
+Route::get('/index', [NicoController::class, 'index']);
+Route::get('/about', [NicoController::class, 'about']);
+Route::get('/blog', [NicoController::class, 'blog']);
+Route::get('/contact', [NicoController::class, 'contact']);
+Route::get('/repair', [NicoController::class, 'repair']);

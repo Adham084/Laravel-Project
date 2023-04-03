@@ -8,13 +8,11 @@
     <title>Laravel Quickstart - Basic</title>
 
     <!-- Fonts -->
-    {{--
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
-    --}}
 
     <!-- Styles -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap3.min.css" rel="stylesheet">
 
     <style>
         body {
@@ -40,10 +38,12 @@
     </nav>
 
     <div class="container">
-        @yield('Contents')
+        @yield('contents')
     </div>
     <!-- JavaScripts -->
+    {{--
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    --}}
 </body>
 </html>

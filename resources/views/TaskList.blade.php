@@ -1,5 +1,5 @@
-@extends('Layouts.app')
-@section('Contents')
+@extends('layouts.app')
+@section('contents')
     <div class="col-sm-offset-2 col-sm-8">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -9,7 +9,7 @@
             <div class="panel-body">
                 <!-- Display Validation Errors -->
                 <!-- New Task Form -->
-                <form action="/add" method="POST" class="form-horizontal">
+                <form action="{{ url('insert') }}" method="POST" class="form-horizontal">
                     @csrf
                     <!-- Task Name -->
                     <div class="form-group">
@@ -42,7 +42,9 @@
                 <table class="table table-striped task-table">
                     <thead>
                         <th>Task</th>
-                        <th>Date</th>
+                        <th>Created</th>
+                        <th>Updated</th>
+                        <th>&nbsp;</th>
                         <th>&nbsp;</th>
                     </thead>
                     <tbody>
@@ -51,17 +53,32 @@
                             <td class="table-text">
                                 <div>{{$task->name}}</div>
                             </td>
-                            
+
                             <td class="table-text">
                                 <div>{{$task->created_at}}</div>
                             </td>
 
+                            <td class="table-text">
+                                <div>{{$task->updated_at}}</div>
+                            </td>
+
                             <!-- Task Delete Button -->
                             <td>
-                                <form action="/delete" method="POST">
+                                <form action="{{ route('task.delete', $task->id) }}" method="POST">
                                     @csrf
                                     <button type="submit" class="btn btn-danger">
                                         <i class="fa fa-btn fa-trash"></i>Delete
+                                    </button>
+                                </form>
+                            </td>
+
+                            <!-- Task Edit Button -->
+                            <td>
+                                <form action="{{ route('task.edit', $task->id) }}" method="POST">
+                                    @csrf
+                                    @method('put')
+                                    <button type="submit" class="btn btn-info">
+                                        <i class="fa fa-btn fa-pencil"></i>Edit
                                     </button>
                                 </form>
                             </td>
