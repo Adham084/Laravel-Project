@@ -50,39 +50,43 @@
                     <tbody>
                         @foreach ($tasks as $task)
                             <tr>
-                            <td class="table-text">
-                                <div>{{$task->name}}</div>
-                            </td>
+                                <td class="table-text">
+                                    {{--
+                                    <form action="{{ route('task.edit', $task->id) }}" method="POST">
+                                        @csrf
+                                        <input type="text" name="name" value="{{ $task->name }}">
+                                        <button type="submit">Save</button>
+                                    </form>
+--}}
+                                    <div>{{ $task->name }}</div>
 
-                            <td class="table-text">
-                                <div>{{$task->created_at}}</div>
-                            </td>
+                                </td>
 
-                            <td class="table-text">
-                                <div>{{$task->updated_at}}</div>
-                            </td>
+                                <td class="table-text">
+                                    <div>{{ $task->created_at }}</div>
+                                </td>
 
-                            <!-- Task Delete Button -->
-                            <td>
-                                <form action="{{ route('task.delete', $task->id) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="fa fa-btn fa-trash"></i>Delete
-                                    </button>
-                                </form>
-                            </td>
+                                <td class="table-text">
+                                    <div>{{ $task->updated_at }}</div>
+                                </td>
 
-                            <!-- Task Edit Button -->
-                            <td>
-                                <form action="{{ route('task.edit', $task->id) }}" method="POST">
-                                    @csrf
-                                    @method('put')
+                                <!-- Task Delete Button -->
+                                <td>
+                                    <form action="{{ route('task.delete', $task->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="fa fa-btn fa-trash"></i>Delete
+                                        </button>
+                                    </form>
+                                </td>
+
+                                <!-- Task Edit Button -->
+                                <td>
                                     <button type="submit" class="btn btn-info">
                                         <i class="fa fa-btn fa-pencil"></i>Edit
                                     </button>
-                                </form>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
