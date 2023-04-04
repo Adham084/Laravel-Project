@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [TaskController::class, 'list'])->name('tasks');
 Route::post('/insert', [TaskController::class, 'insert'])->name('task.insert');
 Route::delete('/delete/{id}', [TaskController::class, 'delete'])->name('task.delete');
-Route::put('/edit/{id}', [TaskController::class, 'edit'])->name('task.edit');
+Route::put('/update/{id}', [TaskController::class, 'update'])->name('task.update');
 
 // Nico
 Route::get('/index', [NicoController::class, 'index']);

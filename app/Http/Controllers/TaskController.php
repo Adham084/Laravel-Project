@@ -31,7 +31,7 @@ class TaskController extends Controller
         */
 
         // Model way.
-        $task = new Task();
+        $task = new Task;
 
         $task->name = $request->name;
         $task->save();
@@ -39,15 +39,28 @@ class TaskController extends Controller
         return redirect()->back();
     }
 
-    public function edit($id, Request $request)
+    public function update($id, Request $request)
     {
-        DB::table('tasks')->where('id', $id)->update(['name' => $request->name, 'updated_at' => now()]);
+        // Query Builder way.
+        // DB::table('tasks')->where('id', $id)->update(['name' => $request->name, 'updated_at' => now()]);
+
+        // Model way.
+        $task = Task::find($id);
+        $task->name = $request->name;
+        $task->save();
+
         return redirect()->back();
     }
 
     public function delete($id)
     {
-        DB::table('tasks')->where('id', $id)->delete();
+        // Query Builder way.
+        // DB::table('tasks')->where('id', $id)->delete();
+
+        // Model way.
+        $task = new Task;
+        $task->destroy($id);
+
         return redirect()->back();
     }
 }

@@ -52,7 +52,7 @@
                             <tr>
                                 <td class="table-text">
                                     {{--
-                                    <form action="{{ route('task.edit', $task->id) }}" method="POST">
+                                    <form action="{{ route('task.update', $task->id) }}" method="POST">
                                         @csrf
                                         <input type="text" name="name" value="{{ $task->name }}">
                                         <button type="submit">Save</button>
